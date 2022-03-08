@@ -1,0 +1,104 @@
+<div
+    class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-gray-700 sm:grid-cols-9 text-gray-400 bg-gray-800">
+    <span class="flex items-center col-span-3">
+        Showing {{ sectionStartRegister }}-{{ sectionEndRegister }} of {{totalRegisters}}
+    </span>
+    <span class="col-span-2"></span>
+    <!-- Pagination -->
+    <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+        <ul class="inline-flex items-center">
+            <!-- FIRST -->
+            <li (click)='goToFirstPage()'>
+                <button class="pr-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    aria-label="First page">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path
+                            d="M18.41 7.41L17 6l-6 6l6 6l1.41-1.41L13.83 12l4.58-4.59m-6 0L11 6l-6 6l6 6l1.41-1.41L7.83 12l4.58-4.59z" />
+                    </svg>
+                </button>
+            </li>
+
+            <!-- PREVIOUS -->
+            <li (click)='goToPreviousPage()'>
+                <button class="pr-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    aria-label="Previous page">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6l1.41-1.42z" />
+                    </svg>
+                </button>
+            </li>
+
+            <!-- PREVIOUS SECTION -->
+            <li *ngIf="displayPreviousSectionButton" (click)='goToPreviousSection()'>
+                <button class="pr-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    aria-label="Last page">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path
+                            d="M4 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                    </svg>
+                </button>
+            </li>
+
+            <ng-container *ngFor='let page of pages'>
+                <ng-container *ngIf='page == currentPage'>
+                    <li>
+                        <button
+                            class="px-3 py-1 text-gray-800 transition-colors duration-150 bg-gray-100 border border-r-0 border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            {{ page }}
+                        </button>
+                    </li>
+                </ng-container>
+
+                <ng-container *ngIf='page !== currentPage'>
+                    <li (click)='goToPage(page)'>
+                        <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            {{ page }}
+                        </button>
+                    </li>
+                </ng-container>
+            </ng-container>
+
+            <!-- NEXT SECTION -->
+            <li *ngIf="displayNextSectionButton" (click)='goToNextSection()'>
+                <button class="pl-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    aria-label="Last page">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path
+                            d="M4 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                    </svg>
+                </button>
+            </li>
+
+            <!-- NEXT -->
+            <li (click)='goToNextPage()'>
+                <button class="pl-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    aria-label="Next">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6l-1.41-1.42z" />
+                    </svg>
+                </button>
+            </li>
+
+            <!-- LAST -->
+            <li (click)='goToLastPage()'>
+                <button class="pl-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                    aria-label="Last page">
+                    <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false"
+                        style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                        <path
+                            d="M5.59 7.41L7 6l6 6l-6 6l-1.41-1.41L10.17 12L5.59 7.41m6 0L13 6l6 6l-6 6l-1.41-1.41L16.17 12l-4.58-4.59z" />
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </span>
+</div>

@@ -1,0 +1,61 @@
+<app-card caption="Producers with longest and shortest interval between wins">
+    <table id="cardProducerMaxIntervalTable" class="w-full">
+        <thead>
+            <tr>
+                <th
+                    colspan="4"
+                    class="px-4 bg-gray-600 text-gray-100 align-middle border border-solid border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Maximum
+                </th>
+            </tr>
+            <tr
+                class="text-xs font-semibold tracking-wide text-left uppercase border-gray-700 text-gray-400 bg-gray-800">
+                <th class="px-4 py-3">Producer</th>
+                <th class="px-4 py-3">Interval</th>
+                <th class="px-4 py-3">Previous Year</th>
+                <th class="px-4 py-3">Following Year</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-gray-700 bg-gray-800">
+            <tr *ngIf="max.length === 0">
+                <td colspan="4" class="px-4 py-3 text-sm text-center">No data avaliable</td>
+            </tr>
+            <tr *ngFor="let producer of max" class="bg-gray-800 hover:bg-gray-900 text-gray-400">
+                <td class="px-4 py-3 text-sm">{{ producer.producer }}</td>
+                <td class="px-4 py-3 text-sm">{{ producer.interval }}</td>
+                <td class="px-4 py-3 text-sm">{{ producer.previousWin }}</td>
+                <td class="px-4 py-3 text-sm">{{ producer.followingWin }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="cardProducerMinIntervalTable" class="w-full">
+        <thead>
+            <tr>
+                <th
+                    colspan="4"
+                    class="px-4 bg-gray-600 text-gray-100 align-middle border border-solid border-gray-500 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Minimum
+                </th>
+            </tr>
+            <tr
+                class="text-xs font-semibold tracking-wide text-left uppercase border-gray-700 text-gray-400 bg-gray-800">
+                <th class="px-4 py-3">Producer</th>
+                <th class="px-4 py-3">Interval</th>
+                <th class="px-4 py-3">Previous Year</th>
+                <th class="px-4 py-3">Following Year</th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-gray-700 bg-gray-800">
+            <tr *ngIf="min.length === 0">
+                <td colspan="4" class="px-4 py-3 text-sm text-center">No data avaliable</td>
+            </tr>
+            <tr *ngFor="let producer of min" class="bg-gray-800 hover:bg-gray-900 text-gray-400">
+                <td class="px-4 py-3 text-sm">{{ producer.producer }}</td>
+                <td class="px-4 py-3 text-sm">{{ producer.interval }}</td>
+                <td class="px-4 py-3 text-sm">{{ producer.previousWin }}</td>
+                <td class="px-4 py-3 text-sm">{{ producer.followingWin }}</td>
+            </tr>
+        </tbody>
+    </table>
+</app-card>

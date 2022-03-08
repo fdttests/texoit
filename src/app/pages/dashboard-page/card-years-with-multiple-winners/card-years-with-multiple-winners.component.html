@@ -1,0 +1,20 @@
+<app-card caption="Years with multiple winners">
+    <table class="w-full">
+        <thead>
+            <tr
+                class="text-xs font-semibold tracking-wide text-left uppercase border-gray-700 text-gray-400 bg-gray-800">
+                <th class="px-4 py-3">Year</th>
+                <th class="px-4 py-3">Win Count</th>
+            </tr>
+        </thead>
+        <tbody class="divide-gray-700 bg-gray-800">
+            <tr *ngIf="years.length === 0">
+                <td colspan="2" class="px-4 py-3 text-sm text-center">No data avaliable</td>
+            </tr>
+            <tr *ngFor="let year of years" class="bg-gray-800 hover:bg-gray-900 text-gray-400">
+                <td class="px-4 py-3 text-sm">{{ year.year }}</td>
+                <td class="px-4 py-3 text-sm">{{ year.winnerCount }}</td>
+            </tr>
+        </tbody>
+    </table>
+</app-card>

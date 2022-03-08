@@ -1,0 +1,29 @@
+<app-card caption="Movie winners by year">
+    <div class="w-full px-4">
+        <select name="year" [(ngModel)]="selectedYear" (ngModelChange)="onChangeYear()"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+    </div>
+
+    <table class="w-full">
+        <thead>
+            <tr
+                class="text-xs font-semibold tracking-wide text-left uppercase border-gray-700 text-gray-400 bg-gray-800">
+                <th class="px-4 py-3">ID</th>
+                <th class="px-4 py-3">Year</th>
+                <th class="px-4 py-3">Title</th>
+            </tr>
+        </thead>
+        <tbody class="divide-gray-700 bg-gray-800">
+            <tr *ngIf="movies.length === 0">
+                <td colspan="3" class="px-4 py-3 text-sm text-center">No data avaliable</td>
+            </tr>
+            <tr *ngFor="let movie of movies" class="bg-gray-800 hover:bg-gray-900 text-gray-400">
+                <td class="px-4 py-3 text-sm">{{ movie.id }}</td>
+                <td class="px-4 py-3 text-sm">{{ movie.year }}</td>
+                <td class="px-4 py-3 text-sm">{{ movie.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+</app-card>
