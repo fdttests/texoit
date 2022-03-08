@@ -1,5 +1,7 @@
 # Texo IT Test
 
+![Workflow Actions Node CI](https://github.com/fdttests/texoit/actions/workflows/ci.yml/badge.svg)
+
 App to to display data from the Golden Raspberry Awards, with a interactive dashboard and a movie list page
 
 ## Live demo
